@@ -1524,7 +1524,7 @@ Ryuu.sendMessage(from, { contentText: `${menu}`, footerText: `${teks}`, buttons:
 break
 case 'donasi':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-reply(`*TERIMA KASIH SUDAH MAU DONASI 🤗*\n\n*Q.S Az-Zalzalah Ayat 7 :*\n\nفَمَنْ يَّعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَّرَهٗۚ\n\nArtinya : Maka barangsiapa \nmengerjakan kebaikan seberat\nzarrah, niscaya dia akan melihat \n(balasan)nya,\n\ncontact owner :\nwa.me/${ownernumber} (Owner)`) 
+reply(`*TERIMA KASIH SUDAH MAU DONASI 🤗*\n\ncontact owner :\nwa.me/${ownernumber} (Owner)`) 
 break
 //Fitur Voice Changer
 case 'bass': 
@@ -2124,7 +2124,7 @@ break
 case 'infotsunami':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait)
-get_result = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/infotsunami?apikey=${ryukey}`)
+get_result = await fetchJson(`https://api-ryubotz.herokuapp.com/api/infotsunami?apikey=${ryukey}`)
 get_result = get_result.result
 ini_tes = "🌱 *Result Info Tsunami*\n\n"
 ini_tes += `📅 *Tanggal* : ${get_result.daftar_tsunami[0].tangal}\n`
@@ -2137,13 +2137,13 @@ break
 case 'covidglobal':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait)
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/info/covidworld?apikey=${ryukey}`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/info/covidworld?apikey=${ryukey}`)
 reply(`🚑 *Result CovidGlobal*\n\n👤 *Total Kasus* : ${get.result.totalCases}\n💉 *Pulih* : ${get.result.recovered}\n🪦 *Meninggal* : ${get.result.deaths}\n🌱 *Kasus Aktif* : ${get.result.activeCases}\n💊 *Kasus Tertutup* : ${get.result.closedCases}\n\n📅 _*Last Update*_ : ${get.result.lastUpdate}`) 
 break
 case 'cuacabandara':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait)
-get_result = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/infocuaca/bandara?apikey=${ryukey}`)
+get_result = await fetchJson(`https://api-ryubotz.herokuapp.com/api/infocuaca/bandara?apikey=${ryukey}`)
 get_result = get_result.result
 ini_tes = "🌱 *Result Info Cuaca Bandara*\n\n"
 ini_tes += `💬 *Nama Bandara* : ${get_result.daftar_bandara[0].nama_bandara}\n`
@@ -2168,14 +2168,14 @@ case 'kisahnabi':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!q) return reply('Masukan Nama Nabi') 
 reply(mess.wait)
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/muslim/kisahnabi?nabi=${q}&apikey=${ryukey}`) 
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/muslim/kisahnabi?nabi=${q}&apikey=${ryukey}`) 
 reply(`💬 *Name* : ${get.result.name}\n📆 *Kelahiran* : ${get.result.kelahiran}\n🪦 *Wafat* : ${get.result.wafat_usia}\n🏡 *Singgah* : ${get.result.singgah}\n👳‍♀️ *Kisah* :\n${get.result.kisah}`) 
 break
 case 'niatsholat':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length < 1) return reply('Pilih niat sholat apa')
 reply(mess.wait)
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/muslim/niatshalat?apikey=RyuBotz`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/muslim/niatshalat?apikey=RyuBotz`)
 if (args[0] === 'subuh' ) {
 subuh = [`💬 *Name* : ${get.result[0].name}\n👳‍♀️ *Arabic* :\n${get.result[0].arabic}\n🌱 *Latin* :\n${get.result[0].latin}\n🍂 *Terjemahan* :\n${get.result[0].terjemahan}`]
 sub = subuh[Math.floor(Math.random() * subuh.length)]
@@ -2220,7 +2220,7 @@ if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length == 0) return reply(`Example: ${prefix}${command} Ryuuka Botz`)
 reply(mess.wait) 
 anu = args.join(" ")
-ini_buffer = await getBuffer(`https://ryuxyz-production-0389.up.railway.app/api/textpro/${command}?text=${anu}&apikey=${ryukey}`)
+ini_buffer = await getBuffer(`https://api-ryubotz.herokuapp.com/api/textpro/${command}?text=${anu}&apikey=${ryukey}`)
 Ryuu.sendMessage(from, ini_buffer, image, { quoted: ftrol})
 limitAdd(sender, limit)
 break
@@ -2249,14 +2249,14 @@ case 'vietnam': case 'malaysia': case 'japan': case 'korea': case 'Indonesia': c
 if (isLimit(sender, isPrem, isOwner, limitCount, limit)) return reply(mess.limit) 
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait) 
-goo = await getBuffer(`https://ryuxyz-production-0389.up.railway.app/api/cecan/vietnam?apikey=${ryukey}`)
+goo = await getBuffer(`https://api-ryubotz.herokuapp.com/api/cecan/vietnam?apikey=${ryukey}`)
 Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: `Success By : ${ownername}`})
 limitAdd(sender, limit)
 break
 case 'santuy': case 'ukty': case 'bocil': case 'gheayubi': case 'rikagusriani':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait) 
-buffer = await getBuffer(`https://ryuxyz-production-0389.up.railway.app/api/asupan/${command}?apikey=${ryukey}`)
+buffer = await getBuffer(`https://api-ryubotz.herokuapp.com/api/asupan/${command}?apikey=${ryukey}`)
 Ryuu.sendMessage(from, buffer, video, {quoted: ftrol})
 .catch((err) => {
 reply('Fitur Sedang Error 🙏')
@@ -2267,7 +2267,7 @@ case 'tatasurya': case 'teknologi': case 'anime': case 'cyberspace': case 'gamin
 if (isLimit(sender, isPrem, isOwner, limitCount, limit)) return reply(mess.limit) 
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reply(mess.wait) 
-anu = await getBuffer(`https://ryuxyz-production-0389.up.railway.app/api/wallpaper/${command}?apikey=${ryukey}`)
+anu = await getBuffer(`https://api-ryubotz.herokuapp.com/api/wallpaper/${command}?apikey=${ryukey}`)
 Ryuu.sendMessage(from, anu, image, {quoted: ftrol, caption: `Success By : ${ownername}`})
 limitAdd(sender, limit)
 break
@@ -2282,7 +2282,7 @@ Ryuu.sendMessage(from, female, image, {quoted: ftrol, caption: 'Cewe nya'})
 break
 case 'meme':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-huft = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/random/meme?apikey=${ryukey}`)
+huft = await fetchJson(`https://api-ryubotz.herokuapp.com/api/random/meme?apikey=${ryukey}`)
 reply(mess.wait) 
 goo = await getBuffer(huft.result.url)
 Ryuu.sendMessage(from, goo, image, {quoted: ftrol, caption: `*${huft.result.title}*\n\n*Author* 👤 : ${huft.result.author}`})
@@ -2291,7 +2291,7 @@ break
 //Random Text
 case 'quotes':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/random/quotes?apikey=${ryukey}`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/random/quotes?apikey=${ryukey}`)
 reply(`*Quotes* 🌱 : ${get.result.quote}\n*Author* 👤 : ${get.result.by}`)
 break
 case 'cerpen':
@@ -2306,17 +2306,17 @@ reply(`*Fuck My Life* 🍂 :\n${get.result}`)
 break
 case 'faktaunik':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/random/faktaunik?apikey=${ryukey}`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/random/faktaunik?apikey=${ryukey}`)
 reply(`*Fakta Unik* 🌱 : ${get.result}`)
 break
 case 'katabijak':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/random/katabijak?apikey=${ryukey}`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/random/katabijak?apikey=${ryukey}`)
 reply(`*Kata Bijak* 🌱 : ${get.result}`)
 break
 case 'pantun':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/random/pantun?apikey=${ryukey}`)
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/random/pantun?apikey=${ryukey}`)
 reply(`*Pantun* 🌱 :\n${get.result}`)
 break
 case 'quotesanime':
@@ -2597,7 +2597,7 @@ limitAdd(sender, limit)
 break
 case 'tebakgambar':
 if (tebakgambar.hasOwnProperty(sender.split('@')[0])) return reply("Selesein yg sebelumnya dulu atuh")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/kuis/tebakGambar?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/kuis/tebakGambar?apikey=${ryukey}`)
 anu = anu
 ini_image = anu.image
 jawaban = anu.jawaban
@@ -2626,7 +2626,7 @@ fs.writeFileSync("./database/game/tebakgambar.json", JSON.stringify(tebakgambar)
 break
 case 'tebakkata':
 if (tebakata.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/tebakkata?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/tebakkata?apikey=${ryukey}`)
 anu = anu
 jawaban = anu.jawaban
 pertanyaan = anu.soal
@@ -2644,7 +2644,7 @@ fs.writeFileSync("./database/game/tebakata.json", JSON.stringify(tebakata))
 break
 case 'susunkata':
 if (susunkata.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-get_result = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/susunkata?apikey=RyuBotz`)
+get_result = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/susunkata?apikey=RyuBotz`)
 jawaban = get_result.jawaban
 pertanyaan = get_result.soal
 Ryuu.sendMessage(from, '```Susun Kata```\n\n• *Soal* :'+pertanyaan+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2661,7 +2661,7 @@ fs.writeFileSync("./database/game/susunkata.json", JSON.stringify(susunkata))
 break
 case 'asahotak':
 if (asahotak.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-get_result = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/asahotak?apikey=RyuBotz`)
+get_result = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/asahotak?apikey=RyuBotz`)
 jawaban = get_result.jawaban
 pertanyaan = get_result.soal
 Ryuu.sendMessage(from, '```Asah Otak```\n\n• *soal* :'+pertanyaan+'\n• *Waktu* : 30s', text, { quoted: mek}).then(() => {
@@ -2678,7 +2678,7 @@ fs.writeFileSync("./database/asahotak.json", JSON.stringify(asahotak))
 break
 case 'tebaklirik':
 if (tebaklirik.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/tebaklirik?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/tebaklirik?apikey=${ryukey}`)
 jawaban = anu.result.answer
 pertanyaan = anu.result.question
 Ryuu.sendMessage(from, '```Tebak Lirik```\n\n• *Soal* :'+anu.result.question+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2695,7 +2695,7 @@ fs.writeFileSync("./database/game/tebaklirik.json", JSON.stringify(tebaklirik))
 break
 case 'tebakjenaka':
 if (tebakjenaka.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/tebakjenaka?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/tebakjenaka?apikey=${ryukey}`)
 jawaban = anu.result.jawaban
 pertanyaan = anu.result.pertanyaan
 Ryuu.sendMessage(from, '```Tebak Jenaka```\n\n• *Soal* :'+anu.result.pertanyaan+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2712,7 +2712,7 @@ fs.writeFileSync("./database/game/tebakjenaka.json", JSON.stringify(tebakjenaka)
 break
 case 'tebakkimia':
 if (tebakimia.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/tebakkimia?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/tebakkimia?apikey=${ryukey}`)
 jawaban = anu.result.lambang
 pertanyaan = anu.result.nama
 Ryuu.sendMessage(from, '```Tebak Kimia```\n\n• *Soal* :'+pertanyaan+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2729,7 +2729,7 @@ fs.writeFileSync("./database/game/tebakimia.json", JSON.stringify(tebakimia))
 break
 case 'tebakbendera':
 if (tebakbendera.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/game/tebakbendera?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/game/tebakbendera?apikey=${ryukey}`)
 jawaban = anu.result.nama
 pertanyaan = anu.result.bendera
 Ryuu.sendMessage(from, '```Tebak Bendera```\n\n• *Bendera* :'+pertanyaan+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2746,7 +2746,7 @@ fs.writeFileSync("./database/game/tebakbendera.json", JSON.stringify(tebakbender
 break
 case 'caklontong':
 if (caklontong.hasOwnProperty(sender.split('@')[0])) return reply("Masih ada soal yg belum terjawab")
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/kuis/caklontong?apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/kuis/caklontong?apikey=${ryukey}`)
 jawaban = anu.result.jawaban
 pertanyaan = anu.result.soal
 Ryuu.sendMessage(from, '```Caklontong```\n\n• *soal* :'+pertanyaan+'\n• *Waktu :* 30s', text, { quoted: mek}).then(() => {
@@ -2768,7 +2768,7 @@ if (isLimit(sender, isPrem, isOwner, limitCount, limit)) return reply(mess.limit
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length < 1) return reply("Masukkan url youtube")
 url = args.join(' ')
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/download/ytmp3?url=${url}&apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/download/ytmp3?url=${url}&apikey=${ryukey}`)
 reply(`Tunggu Butuh Beberapa Menit!`) 
 thumb = await getBuffer(anu.result.thumb) 
 ytmp3 = await getBuffer(anu.result.url)
@@ -2781,7 +2781,7 @@ if (isLimit(sender, isPrem, isOwner, limitCount, limit)) return reply(mess.limit
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length < 1) return reply("Masukkan url youtube")
 url = args.join(' ')
-anu = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/download/ytmp4?url=${url}&apikey=${ryukey}`)
+anu = await fetchJson(`https://api-ryubotz.herokuapp.com/api/download/ytmp4?url=${url}&apikey=${ryukey}`)
 reply(`Tunggu Butuh Beberapa Menit!`)
 thumb = await getBuffer(anu.result.thumb)
 ytmp4 = await getBuffer(anu.result.url)
@@ -2794,7 +2794,7 @@ if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length < 1) return reply("Masukkan url tiktok")
 url = args.join(' ')
 reply(`Tunggu Butuh Beberapa Menit!`) 
-ini = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/download/tiktok?url=${url}&apikey=${ryukey}`)
+ini = await fetchJson(`https://api-ryubotz.herokuapp.com/api/download/tiktok?url=${url}&apikey=${ryukey}`)
 buffer = await getBuffer(ini.result.nowatermark)
 Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: `Success By : ${ownername}`})
 break
@@ -2803,7 +2803,7 @@ if (isBanned) return reply('Kamu Sudah Di banned!')
 if (args.length < 1) return reply("Masukkan url tiktok")
 url = args.join(' ')
 reply(`Tunggu Butuh Beberapa Menit!`) 
-ini = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/download/tiktok?url=${url}&apikey=${ryukey}`)
+ini = await fetchJson(`https://api-ryubotz.herokuapp.com/api/download/tiktok?url=${url}&apikey=${ryukey}`)
 buffer = await getBuffer(ini.result.watermark)
 Ryuu.sendMessage(from, buffer, video, {quoted: ftrol, caption: `Success By : ${ownername}`})
 break
@@ -2839,19 +2839,19 @@ case 'liriklagu':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!c) return reply('yg mau di cari apa?')
 reply(mess.wait) 
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/music/liriklagu?apikey=${ryukey}&query=${c}`) 
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/music/liriklagu?apikey=${ryukey}&query=${c}`) 
 reply(`${get.result}`)
 break
 case 'chordlagu':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!c) return reply('yg mau di cari apa?')
 reply(mess.wait) 
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/music/chordlagu?apikey=${ryukey}&lagu=${c}`) 
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/music/chordlagu?apikey=${ryukey}&lagu=${c}`) 
 reply(`${get.result.result}`) 
 break
 case 'ssweb':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-if (args.length == 0) return reply(`Example: ${prefix}ssweb https://ryuxyz-production-0389.up.railway.app/docs`)
+if (args.length == 0) return reply(`Example: ${prefix}ssweb https://api-ryubotz.herokuapp.com/docs`)
 reply(mess.wait) 
 anu = args.join(" ") 
 get = await getBuffer(`https://hadi-api.herokuapp.com/api/ssweb?url=${anu}&device=desktop&full=off`) 
@@ -2869,7 +2869,7 @@ case 'ghstalk':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!q) return reply('Masukan Username!') 
 reply(mess.wait) 
-get = await fetchJson(`https://ryuxyz-production-0389.up.railway.app/api/githubstalk?username=${q}&apikey=RyuBotz`) 
+get = await fetchJson(`https://api-ryubotz.herokuapp.com/api/githubstalk?username=${q}&apikey=RyuBotz`) 
 ngen = await getBuffer(`${get.result.avatar}`) 
 Ryuu.sendMessage(from, ngen, image, { quoted: ftrol, caption: `*GITHUB STALK 🔎*\n\n💬 *Username* : ${q}\n👤 *Bio* : ${get.result.bio}\n✉️ *email* : ${get.result.email}\n👥 *public repo* : ${get.result.public_repo}\n🌱 *public gists* : ${get.result.public_gists}\n🎀 *Follower* : ${get.result.follower}\n🧸 *Following* : ${get.result.following}\n💻 *Type* : ${get.result.type}`})
 break
@@ -3647,7 +3647,7 @@ Ryuu.sendMessage(from, goblin, text, {quoted: ftrol})
 break
 case 'sc':
 case 'script':
-function _0xb25f(_0x14ebf8,_0x5844b2){var _0x5b10cb=_0x5b10();return _0xb25f=function(_0xb25fb2,_0x2cad47){_0xb25fb2=_0xb25fb2-0x1a5;var _0x454d6c=_0x5b10cb[_0xb25fb2];return _0x454d6c;},_0xb25f(_0x14ebf8,_0x5844b2);}var _0x4e2eed=_0xb25f;function _0x5b10(){var _0x5aa883=['1720760lIAqmS','1243960bDlpuJ','OWNER\x20👤','2489085OHHZxd','sendMessage','*Info\x20Script*\x20🔎\x0a📚\x20Script\x20Made\x20By\x20Ryuuka\x20Botz\x0a🌱\x20Version\x20:\x203.0.0\x0a📈\x20Last\x20Update\x20:\x2020/3/2022\x0a📩\x20Link\x20Sc\x20:\x20https://youtube.com/channel/UCjxavxEQa1Wd9A4J9tOmATA\x0a♨️\x20Sumber\x20Script\x20:\x20Ryuuka\x20Botz\x0a\x0a🍁\x20Subscribe\x20For\x20More\x20Update','3737187mbPMUb','397712nnnszj','MENU\x20💌','\x0aCreator\x20:\x206283891921787','9599440BLrhqC','buttonsMessage','60onNQNk','\x20|\x20Runtime\x20:\x20','uptime','LOCATION','93224VYdPGc'];_0x5b10=function(){return _0x5aa883;};return _0x5b10();}(function(_0x199e85,_0x31a0ca){var _0x533dec=_0xb25f,_0x1893a2=_0x199e85();while(!![]){try{var _0x2b742e=-parseInt(_0x533dec(0x1b0))/0x1+-parseInt(_0x533dec(0x1b2))/0x2+-parseInt(_0x533dec(0x1a6))/0x3+parseInt(_0x533dec(0x1b1))/0x4+parseInt(_0x533dec(0x1b4))/0x5+parseInt(_0x533dec(0x1ac))/0x6*(parseInt(_0x533dec(0x1a7))/0x7)+parseInt(_0x533dec(0x1aa))/0x8;if(_0x2b742e===_0x31a0ca)break;else _0x1893a2['push'](_0x1893a2['shift']());}catch(_0x1b8781){_0x1893a2['push'](_0x1893a2['shift']());}}}(_0x5b10,0xb37bc),menu=_0x4e2eed(0x1a5),teks=botname+_0x4e2eed(0x1ad)+runtime(process[_0x4e2eed(0x1ae)]())+_0x4e2eed(0x1a9),Ryuu[_0x4e2eed(0x1b5)](from,{'contentText':''+menu,'footerText':''+teks,'buttons':[{'buttonId':prefix+'menu','buttonText':{'displayText':_0x4e2eed(0x1a8)},'type':0x1},{'buttonId':prefix+'owner','buttonText':{'displayText':_0x4e2eed(0x1b3)},'type':0x1}],'headerType':_0x4e2eed(0x1af),'locationMessage':{'degreesLatitude':'','degreesLongitude':'','jpegThumbnail':fakeimage,'contextInfo':{'mentionedJid':[sender]}}},_0x4e2eed(0x1ab)));
+function _0xb25f(_0x14ebf8,_0x5844b2){var _0x5b10cb=_0x5b10();return _0xb25f=function(_0xb25fb2,_0x2cad47){_0xb25fb2=_0xb25fb2-0x1a5;var _0x454d6c=_0x5b10cb[_0xb25fb2];return _0x454d6c;},_0xb25f(_0x14ebf8,_0x5844b2);}var _0x4e2eed=_0xb25f;function _0x5b10(){var _0x5aa883=['1720760lIAqmS','1243960bDlpuJ','OWNER\x20👤','2489085OHHZxd','sendMessage','*Info\x20Script*\x20🔎\x0a📚\x20Script\x20Made\x20By\x20Izumi\x20Botz\x0a🌱\x20Version\x20:\x203.0.0\x0a📈\x20Last\x20Update\x20:\x2020/3/2022\x0a📩\x20Link\x20Sc\x20:\x20https://youtube.com/c/TianYT99\x0a♨️\x20Sumber\x20Script\x20:\x20Tian\x20YT\x0a\x0a🍁\x20Subscribe\x20For\x20More\x20Update','3737187mbPMUb','397712nnnszj','MENU\x20💌','\x0aCreator\x20:\x206281328507885','9599440BLrhqC','buttonsMessage','60onNQNk','\x20|\x20Runtime\x20:\x20','uptime','LOCATION','93224VYdPGc'];_0x5b10=function(){return _0x5aa883;};return _0x5b10();}(function(_0x199e85,_0x31a0ca){var _0x533dec=_0xb25f,_0x1893a2=_0x199e85();while(!![]){try{var _0x2b742e=-parseInt(_0x533dec(0x1b0))/0x1+-parseInt(_0x533dec(0x1b2))/0x2+-parseInt(_0x533dec(0x1a6))/0x3+parseInt(_0x533dec(0x1b1))/0x4+parseInt(_0x533dec(0x1b4))/0x5+parseInt(_0x533dec(0x1ac))/0x6*(parseInt(_0x533dec(0x1a7))/0x7)+parseInt(_0x533dec(0x1aa))/0x8;if(_0x2b742e===_0x31a0ca)break;else _0x1893a2['push'](_0x1893a2['shift']());}catch(_0x1b8781){_0x1893a2['push'](_0x1893a2['shift']());}}}(_0x5b10,0xb37bc),menu=_0x4e2eed(0x1a5),teks=botname+_0x4e2eed(0x1ad)+runtime(process[_0x4e2eed(0x1ae)]())+_0x4e2eed(0x1a9),Ryuu[_0x4e2eed(0x1b5)](from,{'contentText':''+menu,'footerText':''+teks,'buttons':[{'buttonId':prefix+'menu','buttonText':{'displayText':_0x4e2eed(0x1a8)},'type':0x1},{'buttonId':prefix+'owner','buttonText':{'displayText':_0x4e2eed(0x1b3)},'type':0x1}],'headerType':_0x4e2eed(0x1af),'locationMessage':{'degreesLatitude':'','degreesLongitude':'','jpegThumbnail':fakeimage,'contextInfo':{'mentionedJid':[sender]}}},_0x4e2eed(0x1ab)));
 break
 case 'creator':
 const _0x1c546c=_0x719a;(function(_0x368cc6,_0x32ed98){const _0x14c2a5=_0x719a,_0x481753=_0x368cc6();while(!![]){try{const _0x15f178=parseInt(_0x14c2a5(0xb9))/0x1*(-parseInt(_0x14c2a5(0xbd))/0x2)+-parseInt(_0x14c2a5(0xbf))/0x3*(-parseInt(_0x14c2a5(0xc1))/0x4)+parseInt(_0x14c2a5(0xb5))/0x5*(-parseInt(_0x14c2a5(0xaf))/0x6)+-parseInt(_0x14c2a5(0xbb))/0x7+-parseInt(_0x14c2a5(0xb7))/0x8+-parseInt(_0x14c2a5(0xb4))/0x9*(parseInt(_0x14c2a5(0xb6))/0xa)+parseInt(_0x14c2a5(0xbe))/0xb;if(_0x15f178===_0x32ed98)break;else _0x481753['push'](_0x481753['shift']());}catch(_0x508686){_0x481753['push'](_0x481753['shift']());}}}(_0x9481,0x81353));function _0x9481(){const _0x3e7703=['FN:Ryuuka\x20Botz\x0a','Pembuat\x20Bot\x20','VERSION:3.0\x0a','trim','7003971adfgPh','45FZHgLJ','10HADgci','4982552ExrBwg','END:VCARD','26021QKNBKG','push','1464876Rbkuxy','BEGIN:VCARD\x0a','60jQmIki','29122797JjRjXz','1982334znyqhg','sendMessage','4tzltaq','ORG:\x20Creator\x20','jid','258756gNkCGp'];_0x9481=function(){return _0x3e7703;};return _0x9481();}if(isBanned)return reply('Kamu\x20Sudah\x20Di\x20banned!');members_ids=[];for(let mem of groupMembers){members_ids[_0x1c546c(0xba)](mem[_0x1c546c(0xae)]);}function _0x719a(_0x4ca506,_0x25ad25){const _0x94818e=_0x9481();return _0x719a=function(_0x719a5c,_0x56015e){_0x719a5c=_0x719a5c-0xae;let _0x1e9dfd=_0x94818e[_0x719a5c];return _0x1e9dfd;},_0x719a(_0x4ca506,_0x25ad25);}vcard2=_0x1c546c(0xbc)+_0x1c546c(0xb2)+_0x1c546c(0xb0)+(_0x1c546c(0xc2)+botname+'\x20;\x0a')+'TEL;type=CELL;type=VOICE;waid=6283891921787:6283891921787\x0a'+_0x1c546c(0xb8)[_0x1c546c(0xb3)](),Ryuu[_0x1c546c(0xc0)](from,{'displayName':_0x1c546c(0xb1)+botname,'vcard':vcard2},contact,{'quoted':ftrol});
