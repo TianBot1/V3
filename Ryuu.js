@@ -419,7 +419,7 @@ let settingstatus = 0;
 if (new Date() * 1 - settingstatus > 1000) {
 let _uptime = process.uptime() * 1000;
 let uptimer = clockString(_uptime);
-await Ryuu.setStatus(`${botname} | ⏲️ Runtime : ${uptimer}`).catch((_) => _);
+await Ryuu.setStatus(`${botname} | ⏲️ Runtime : ${uptimer} | Bot By Tian Store`).catch((_) => _);
 settingstatus = new Date() * 1;
 }}
 //function check healt by febri
@@ -722,9 +722,9 @@ if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
 if (budy.match(/(https:\/\/chat.whatsapp.com)/gi)) {
 sendButMessage(from, ` *GROUP LINK DETECTED*\n\nMaaf Kamu Akan Di Kick Dari Group Ini!`, `Klik Di Bawah Untuk Mematikan`, [
 {
-buttonId: `${prefix}antilink disable`,
+buttonId: `${prefix}sewabot`,
 buttonText: {
-displayText: `Disable Antilink🌱`,
+displayText: `🌱`,
 },
 type: 1,
 }]);
@@ -1101,39 +1101,6 @@ await Ryuu.sendMessage(from, skuygelud, MessageType.buttonsMessage, {quoted: ftr
 }
 break
 case 'menu':
-if (isBanned) return reply('Kamu Sudah Di banned!') 
-reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
-var p = await Ryuu.getStatus(`${sender}`, MessageType.text)
-ptod = "6283891921787@s.whatsapp.net"
-stod = `${sender}`
-dtod = 'ngetes'
-uwu = '```'
-stst = await Ryuu.getStatus(`${sender.split('@')[0]}@c.us`)
-stst = stst.status == 401 ? '' : stst.status
-tescok =
-`Haii @${sender.split('@')[0]}
-
-╭─ 💻 *Info Bot* 
-│✾ _*Owner Name*_ : ${ownername}
-│✾ _*Bot Name*_ : ${botname}
-│✾ _*Speed*_ : ${processsTime(mek.messageTimestamp.low, moment())}s
-│✾ _*Runtime*_ : ${runtime(process.uptime())}
-│✾ _*Status*_ : ${public? `Public Mode`:`Self Mode`}
-╰───
-
-╭─ 👤 *Info User* 
-│✾ _*Name User*_ : ${pushname}
-│✾ _*Bio User*_ : ${p.status==undefined?`Not Found`:p.status}
-│✾ _*Nomor*_ : @${sender.split('@')[0]}
-│✾ _*Rank*_ : ${role}
-│✾ _*Uang*_ : $${(getBalance(sender, balance))}
-│✾ _*Xp*_ : ${getLevelingXp(sender)}/${reqXp}
-│✾ _*Level*_ : ${getLevelingLevel(sender)}
-│✾ _*Limit*_ : ${getLimit(sender, limitCount, limit)}/${limitCount}
-╰───`
- Sendbutdocument(from, tescok, `Runtime : ${runtime(process.uptime())}`, fs.readFileSync('./media/Ryuu.pdf'),{mimetype:Mimetype.pdf, thumbnail:fs.readFileSync('./media/Ryuu.jpg'), filename:`Ryuu.pdf`,pageCount: 999 }, [{buttonId:`${prefix}listmenu`,buttonText:{displayText:'LIST MENU 🌱'},type:1},{buttonId:`${prefix}allmenu`,buttonText:{displayText:'ALL MENU ⛩️'},type:1},{buttonId:`${prefix}script`,buttonText:{displayText:'SCRIPT 🎥'},type:1}], {quoted:fvid, contextInfo: { mentionedJid: [ptod,dtod,stod], forwardingScore: 508, isForwarded: true, externalAdReply:{title:`${tampilUcapan} ${pushname}\nScript Create By RyuukaBotz`,mediaType:"2",thumbnail:fakeimage,mediaUrl:`https://youtu.be/Q6utY1yaXAY`}}})
-break
-case 'allmenu':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 reqXp  = 5000 * (Math.pow(2, getLevelingLevel(sender)) - 1)
 var p = await Ryuu.getStatus(`${sender}`, MessageType.text)
@@ -1172,7 +1139,7 @@ menu =
 ╰───`
 teks =
 `${botname} | Runtime : ${runtime(process.uptime())}\nOwner : ${ownername}`
-Ryuu.sendMessage(from, { contentText: `${menu}`+'\n\n'+allmenu(prefix), footerText: `${teks}`, buttons: [{ buttonId: `${prefix}donasi`, buttonText: { displayText: 'DONASI 💵' }, type: 1 },{ buttonId: `${prefix}owner`, buttonText: { displayText: 'OWNER 🌱' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
+Ryuu.sendMessage(from, { contentText: `${menu}`+'\n\n'+allmenu(prefix), footerText: `${teks}`, buttons: [{ buttonId: `${prefix}donasi`, buttonText: { displayText: 'DONASI 💵' }, type: 1 },{ buttonId: `${prefix}script`, buttonText: { displayText: 'SCRIPT 🎥' }, type: 1 },{ buttonId: `${prefix}owner`, buttonText: { displayText: 'OWNER 🌱' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
 break
 case 'othermenu':
 if (isBanned) return reply('Kamu Sudah Di banned!')
@@ -1408,7 +1375,7 @@ reply('Suksess broadcast')
 } else {
 for (let _ of anu100) {
 Ryuu.sendMessage(_.jid, 
-{"contentText": `*「 broadcast bot 」*\n\n${body.slice(4)}`,
+{"contentText": `*「 BROADCAST BOT 」*\n\n${body.slice(4)}`,
 "footerText": `${tampilTanggal}`, 
 "buttons": [
 {"buttonId": `${prefix}menu`,
@@ -2094,6 +2061,66 @@ const der = dare[Math.floor(Math.random() * dare.length)]
 buff = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
 Ryuu.sendMessage(from, buff, image, { caption: '*Dare*\n\n'+ der, quoted: mek })
 break
+case 'sewabot':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+sewabot =
+`*Sewa Bot By Tian Store*
+
+*_Perminggu = 2.000_*
+*_Perbulan = 7.000_*
+*_Permanen = 10.000_*
+
+*_Contact Owner : https://wa.me/6281328507885?text=Sewa+Bot_*`
+teks =`${botname} | Runtime : ${runtime(process.uptime())}\nOwner : ${ownername}`
+Ryuu.sendMessage(from, { contentText: `${sewabot}`, footerText: `${teks}`, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU 🎯' }, type: 1 },{ buttonId: `${prefix}owner`, buttonText: { displayText: 'OWNER 🌱' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
+break
+case 'bulanramadhan':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+menu =
+`*Selamat Menuaikan Ibadah  Puasa*
+*_Semoga Puasanya Lancar Dan Tidak Bolong_*
+
+Pohon beringin daunnya lebat
+Batang besi mudah berkarat
+Untuk kerabat dan juga sahabat
+Selamat berpuasa semoga kuat
+
+*© Tian Store*`
+teks =`${botname} | Runtime : ${runtime(process.uptime())}\nOwner : ${ownername}`
+Ryuu.sendMessage(from, { contentText: `${menu}`, footerText: `${teks}`, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU 🌱' }, type: 1 },{ buttonId: `${prefix}owner`, buttonText: { displayText: 'OWNER 🌱' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
+break
+case 'adminyos':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+buttonss = [{buttonId: `${prefix}sewabot`, buttonText: {displayText: 'SewaBot 🌱'}, type: 1}]
+const buMess2 = {
+contentText: "*FEE ADMIN YOSS STORE*\n\n0k - 19k = 3k\n20 - 49k = 5k\n50k-99k = 10k\n100k - 250k = 20k\n251k - 499k = 25k\n500k - 750k = 30k\n751k -  999k = 45k\n1 JT+ = 60k\nTT/BT = 20k\n\n#StayAmanah😇\nTiktok:yoss_store\nIg:yoss_store",
+footerText: '*Silahkan Hub Admin Yos*',
+buttons: buttonss,
+headerType: 1
+}
+await Ryuu.sendMessage(from, buMess2, MessageType.buttonsMessage, {quoted: mek})
+break
+case 'tes':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+menu =
+`*Bot Sudah On Jika Ada Masalah Silakan Hub Owner*
+
+*_Gunakan Bot Dengan Bijak_*
+*_Spam - Telp = Block!!!_*`
+teks =`${botname} | Runtime : ${runtime(process.uptime())}\nOwner : ${ownername}`
+Ryuu.sendMessage(from, { contentText: `${menu}`, footerText: `${teks}`, buttons: [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU 🌱' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
+break
+case 'jpm':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+buttonss = [{buttonId: `${prefix}owner`, buttonText: {displayText: 'Owner 🌱'}, type: 1}]
+const buMess4 = {
+contentText: "🛍️ *LIST JPM :* 🛍️\n\n💸 *10 Mem : 1k*\n💸 *20 Mem : 2k*\n💸 *30 Mem : 3k*\n💸 *40 Mem : 4k*\n💸 *50 Mem : 5k*\n💸 *60 Mem : 6k*\n💸 *70 Mem : 7k*\n\n🛍️ *LIST JASHER :* 🛍️\n\n*SHARE 50 GRUP*\n?? *1× SHARE : 500P*\n💸 *2× SHARE : 1K*\n💸 *3× SHARE : 1.5K*\n\n*SHARE 100 GRUP*\n💸 *1× SHARE : 1K*\n💸 *2× SHARE : 2K*\n💸 *3× SHARE : 3K*\n\n*SHARE 150 GRUP*\n💸 *1× SHARE : 1.5K*\n💸 *2× SHARE : 2.5K*\n💸 *3× SHARE : 3.5K*\n\n*ORDER? SUNG KE PM*\n\n*Grup : https://chat.whatsapp.com/HEoRFnY3AqP0Rmlk08TNkZ*\n\n*Pay : Gopay - Qris Allpay +1K*\n\n*WASPADA CLONE*\n*https://wa.me/6281328507885*",
+footerText: '*Silahkan Hub Owner*',
+buttons: buttonss,
+headerType: 1
+}
+await Ryuu.sendMessage(from, buMess4, MessageType.buttonsMessage, {quoted: mek})
+break
 case 'bagaimanakah':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 bagaimanakah = body.slice(1)
@@ -2353,19 +2380,19 @@ case 'antilink':
 if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!isGroup) return reply(mess.only.group)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin) 
-if (!q) return reply(`Pilih enable atau disable`)
-if (args[0].toLowerCase() === 'enable'){
+if (!q) return reply(`Ketik :\n${prefix}antilink on untuk mengaktifkan\n${prefix}antilink off untuk menonaktifkan`)
+if (args[0].toLowerCase() === 'on'){
 if (isAntiLink) return reply(`Udah aktif`)
 antilink.push(from)
 fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
 reply('Succes Antilink Telah Nyala🌱')
-} else if (args[0].toLowerCase() === 'disable'){
+} else if (args[0].toLowerCase() === 'off'){
 let anu = antilink.indexOf(from)
 antilink.splice(anu, 1)
 fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
 reply('Succes Antilink Telah Mati🍂')
 } else {
-reply(`Pilih enable atau disable`)
+reply(`*on untuk mengaktifkan, off untuk menonaktifkan*`)
 }
 break
 case 'add':
@@ -2442,7 +2469,7 @@ if (isBanned) return reply('Kamu Sudah Di banned!')
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins && !isOwner) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(`Jadikan Bot Sebagai Admin Group!`)
-if (args.length == 0)return reply(`Penggunaan ${prefix + command} Ryuuka Support`)
+if (args.length == 0)return reply(`Penggunaan ${prefix + command} Tian Store`)
 Ryuu.groupUpdateDescription(from, q)
 .then((res) => reply(jsonformat(res)))
 .catch((err) => reply(jsonformat(err)))
@@ -2992,195 +3019,48 @@ break
 //Fitur Store
 case 'pay':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-reply(`*${tampilUcapan} ${pushname}*\n\n_*Pilih Salah Satu Untuk Melakukan TopUp*_\n\n*Gopay* : ${gopay}\n*Dana* : ${dana}\n*Ovo* : ${ovo}\n*Pulsa* : ${pulsa}\n\n_*Jangan Lupa Sertakan Bukti Ke Owner*_ <3`) 
+reply(`*${tampilUcapan} ${pushname}*\n\n_*Pilih Salah Satu Untuk Melakukan TopUp*_\n\n*Gopay* : ${gopay}\n*Ovo* : ${ovo}\n*Qris* : Silakan Minta Owner\n\n*_Jangan Lupa Sertakan Bukti Transaksi Ke Owner_*`) 
 break
-case 'mobilelegend': case 'ml':
+case 'formulir':
 if (isBanned) return reply('Kamu Sudah Di banned!')
-capti =`*Ryuuka Store*
-   
-PROSES 1-60Mnt Max 1X24 Jam  
-OPEN 08.00-21.00  
-FORMAT ID  
-   
-_*List TopUp MobileLegends*_
+reply(`*${tampilUcapan} ${pushname}*\n\n*_FORMULIR TIAN STORE_*\n\n*Game :*\n*Nick :*\n*Id Game :*\n*Jumlah Top Up :*\n*Payment :*\n\n*_ISI FORMULIR DENGAN BENAR JIKA ADA KESALAHAN MENGISI BUKAN SALAH ADMIN_*`) 
+break
+case 'ff': case 'dmff':
+if (isBanned) return reply('Kamu Sudah Di banned!')
+capti = `*Tian Store*
   
-86  DM = 18.500
-172  DM = 37.500
-257  DM = 55.600
-344  DM = 73.400
-429  DM = 92.300
-514  DM = 112.400
-706 DM = 145.100
-878 DM = 182.200
-963 DM = 198.600
-1412 DM = 288.200
-2195 DM = 426.200
-3688 DM = 708.100
-4394 DM = 848.600
-5532 DM = 1.065.000
-9288 DM = 1.768.100
-9926 DM = 1.913.600
-14820 DM = 2.834.100
-18076 DM = 3 466.300
- 
-SL/TW = 122.000
-STARTJT B = 270.500
- 
-*Jika ingin memesan chat owner*  
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'aov':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti =`*Ryuuka Store*
-   
-PROSES 1-60Mnt Max 1X24 Jam  
-OPEN 08.00-21.00  
-FORMAT ID  
-   
-_*List TopUp Aov*_
-  
-40VC = Rp 10,000.00  
-90VC = Rp 20,000.00  
-130VC = Rp 30,000.00  
-180VC = Rp 40,000.00  
-230VC = Rp 50,000.00  
-470VC = Rp 100,000.00  
-950VC = Rp 195,000.00  
-1.430VC = Rp 290,000.00  
-2.390VC = Rp 485,000.00  
-4.800VC = Rp 970,000.00  
-24.050VC = Rp 4.845,000.00  
-48.200VC = Rp 9.685,000.00  
+List DM Free Fire
+70 💎 10.000
+100 💎 14.500
+140 💎 19.500
+210 💎 29.000
+355 💎 48.500
+500 💎 68.000
+720 💎 95.000
+1075 💎 140.000
+2000 💎 260.000
+4000 💎 500.000
+4050 💎 530.000
+4720 💎 555.000
+4850 💎 635.000
+5500 💎 720.000
+6550 💎 850.000
+7290 💎 925.000
 
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'codm': case 'cod':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti = `*Ryuuka Store*
-    
-PROSES 1-60Mnt 1X24 Jam   
-OPEN 10.00-19.00   
-FORMAT ID   
-    
-_*List TopUp Codm*_
+MM 💎 30.000
+MB 💎 140.000
 
-53CP = Rp 10,000.00
-112CP = Rp 20,000.00
-278CP = Rp 50,000.00
-581CP = Rp 98,000.00
-1.268CP = Rp 195,000.00
-1.901CP = Rp 290,000.00
-3.300CP = Rp 480,000.00
-7.128CP = Rp 950,000.00
 
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'freefire': case 'ff':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti = `*Ryuuka Store*
-    
-PROSES 1-180Mnt 1X24 Jam   
-OPEN 10.00-19.00   
-FORMAT ID   
+\`\`\`Payment : Qris All Pay\`\`\`
 
-_*List TopUp FreeFire*_
-    
-70 DM = 9.250
-100 DM = 13.500
-140 DM = 18.600
-150 DM = 20.400
-200 DM = 26.900
-210 DM = 28.400
-280 DM = 37.100
-355 DM = 46.600
-400 DM = 52.600
-500 DM = 65.600
-635 DM = 82.800
-720 DM = 91.400
-1000 DM = 118.600
-1075 DM = 137.600
-1440 DM = 182.600
-9926 DM = 248.600
-14820 DM = 340.100
-18076 DM = 497.600
-Member M = 28.000 
-    
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'lol':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti = `*Ryuuka Store*
-    
-PROSES 1-180Mnt 1X24 Jam   
-OPEN 10.00-19.00   
-FORMAT ID   
-    
-_*List TopUp LoL*_
-   
-125WC = RP 18,000.00   
-420WC = RP 55,000.00   
-700WC = RP 85,000.00   
-1.375WC = RP 155,000.00   
-2.400WC = RP 250,000.00   
-4,000.00WC = RP 395,000.00   
-8.150WC = RP 785,000.00   
-    
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'sausage':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti = `*Ryuuka Store*
- 
-PROSES 1-60Mnt Max 1X24 Jam  
-OPEN 09.00-21.00  
-FORMAT ID  
-   
-_*List TopUp Sausage*_ 
- 
-60C = RP 16,000.00  
-180C = RP 45,000.00  
-316C = RP 68,000.00  
-718C = RP 135,000.00  
-1.368C = RP 265,000.00  
-2.118C = RP 418,000.00  
-3.548C = RP 682,000.00  
-7.096C = RP 1.305,000.00  
+Order? PM ae
+https://wa.me/6281328507885
+
+*Proses 5-10 mnt*
    
 Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
-break
-case 'valorant': case 'valo':
-if (isBanned) return reply('Kamu Sudah Di banned!')
-capti = `*Ryuuka Store*
-  
-PROSES 1-180Mnt Max 1X24 Jam  
-OPEN 10.00-19.00  
-FORMAT ID  
-   
-_*List TopUp Valorant*_
-  
-125VP = 18,000.00  
-420VP = 55,000.00  
-700VP = 85,000.00  
-1.375VP = 155,000.00  
-2.400VP = 250,000.00  
-4,000.00VP = 395,000.00  
-8.150VP = 785,000.00  
-   
-Untuk pay / pembayan silahkan ketik ${prefix}pay atau click button di bawah ini`
-but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 }]
-sendButton(from, capti, `Store ${ownername}`, but)
+but = [{ buttonId: `${prefix}pay`, buttonText: { displayText: 'Pembayaran 💸' }, type: 1 },{ buttonId: `${prefix}formulir`, buttonText: { displayText: 'Formulir 📝' }, type: 1 }]
+sendButton(from, capti, `Bot By ${ownername}`, but)
 break
 if (isBanned) return reply('Kamu Sudah Di banned!')
 //Fitur Rpg
@@ -3654,7 +3534,7 @@ const _0x1c546c=_0x719a;(function(_0x368cc6,_0x32ed98){const _0x14c2a5=_0x719a,_
 break
 case 'thanksto':
 case 'tqto':
-var _0x53d05c=_0x338b;function _0x338b(_0x540308,_0xf3f284){var _0x1a10b9=_0x1a10();return _0x338b=function(_0x338bb8,_0x4bae6e){_0x338bb8=_0x338bb8-0x1b0;var _0x357bb0=_0x1a10b9[_0x338bb8];return _0x357bb0;},_0x338b(_0x540308,_0xf3f284);}function _0x1a10(){var _0x2c8020=['947618PDcscM','7325700DaJswK','3466600BcwlTj','2847873TlQOkj','560922cJLRQN','*SPECIAL\x20THANKS\x20TO\x20:*\x0a\x0a*😇\x20Allah\x20Swt*\x0a*😇\x20Nabi\x20Muhammad\x20SAW*\x0a\x0a*BIG\x20THANKS\x20TO\x20:*\x0a*🌱\x20Adiwajshing\x20Baileys\x20:*\x0ahttps://github.com/Adiwajshing\x0a*🌱RyuukaBotz\x20(\x20CREATOR\x20BOT\x20RyuBotzS2\x20)*\x0a*🌱\x20RyuukaTeam\x20(\x20Base\x20+\x20Recode\x20)*\x20:\x0ahttps://youtube.com/c/ryuukabotz\x0a*🌱\x20FEBZABOTZ\x20(\x20RPG\x20)*\x20:\x0ahttps://youtube.com/c/FEBZABOTZ\x0a🌱\x20*Zeeone\x20Ofc\x20(\x20Case\x20)*\x20:\x0ahttps://youtube.com/c/ZEEONEOFC\x0a🌱\x20','585grNvaE','1526079ohjuZl','1jacSsG','4EerEXG','\x20:\x20cuman\x20make\x20doang\x20dia\x20🤣','11mfRTgn','35536RPBQru','15BtdDHm'];_0x1a10=function(){return _0x2c8020;};return _0x1a10();}(function(_0x4d28a5,_0x15b542){var _0x5e1da4=_0x338b,_0x558a56=_0x4d28a5();while(!![]){try{var _0x23d195=-parseInt(_0x5e1da4(0x1bc))/0x1*(parseInt(_0x5e1da4(0x1b4))/0x2)+parseInt(_0x5e1da4(0x1bb))/0x3*(-parseInt(_0x5e1da4(0x1bd))/0x4)+parseInt(_0x5e1da4(0x1b3))/0x5*(-parseInt(_0x5e1da4(0x1b8))/0x6)+parseInt(_0x5e1da4(0x1b7))/0x7+-parseInt(_0x5e1da4(0x1b2))/0x8*(-parseInt(_0x5e1da4(0x1ba))/0x9)+parseInt(_0x5e1da4(0x1b6))/0xa+parseInt(_0x5e1da4(0x1b1))/0xb*(parseInt(_0x5e1da4(0x1b5))/0xc);if(_0x23d195===_0x15b542)break;else _0x558a56['push'](_0x558a56['shift']());}catch(_0x43f835){_0x558a56['push'](_0x558a56['shift']());}}}(_0x1a10,0x5f26d),reply(_0x53d05c(0x1b9)+ownername+_0x53d05c(0x1b0)));
+var _0x53d05c=_0x338b;function _0x338b(_0x540308,_0xf3f284){var _0x1a10b9=_0x1a10();return _0x338b=function(_0x338bb8,_0x4bae6e){_0x338bb8=_0x338bb8-0x1b0;var _0x357bb0=_0x1a10b9[_0x338bb8];return _0x357bb0;},_0x338b(_0x540308,_0xf3f284);}function _0x1a10(){var _0x2c8020=['947618PDcscM','7325700DaJswK','3466600BcwlTj','2847873TlQOkj','560922cJLRQN','*SPECIAL\x20THANKS\x20TO\x20:*\x0a\x0a*😇\x20Allah\x20Swt*\x0a*😇\x20Nabi\x20Muhammad\x20SAW*\x0a\x0a*BIG\x20THANKS\x20TO\x20:*\x0a*🌱\x20Adiwajshing\x20Baileys\x20:*\x0ahttps://github.com/Adiwajshing\x0a*🌱RyuukaBotz\x20(\x20CREATOR\x20BOT\x20RyuBotzS2\x20)*\x0a*🌱\x20RyuukaTeam\x20(\x20Base\x20+\x20Recode\x20)*\x20:\x0ahttps://youtube.com/c/ryuukabotz\x0a*🌱\x20FEBZABOTZ\x20(\x20RPG\x20)*\x20:\x0ahttps://youtube.com/c/FEBZABOTZ\x0a🌱\x20*Zeeone\x20Ofc\x20(\x20Case\x20)*\x20:\x0ahttps://youtube.com/c/ZEEONEOFC\x0a🌱\x20','585grNvaE','1526079ohjuZl','1jacSsG','4EerEXG','\x20:\x20Owner\x20Tian\x20Store\x20🌀','11mfRTgn','35536RPBQru','15BtdDHm'];_0x1a10=function(){return _0x2c8020;};return _0x1a10();}(function(_0x4d28a5,_0x15b542){var _0x5e1da4=_0x338b,_0x558a56=_0x4d28a5();while(!![]){try{var _0x23d195=-parseInt(_0x5e1da4(0x1bc))/0x1*(parseInt(_0x5e1da4(0x1b4))/0x2)+parseInt(_0x5e1da4(0x1bb))/0x3*(-parseInt(_0x5e1da4(0x1bd))/0x4)+parseInt(_0x5e1da4(0x1b3))/0x5*(-parseInt(_0x5e1da4(0x1b8))/0x6)+parseInt(_0x5e1da4(0x1b7))/0x7+-parseInt(_0x5e1da4(0x1b2))/0x8*(-parseInt(_0x5e1da4(0x1ba))/0x9)+parseInt(_0x5e1da4(0x1b6))/0xa+parseInt(_0x5e1da4(0x1b1))/0xb*(parseInt(_0x5e1da4(0x1b5))/0xc);if(_0x23d195===_0x15b542)break;else _0x558a56['push'](_0x558a56['shift']());}catch(_0x43f835){_0x558a56['push'](_0x558a56['shift']());}}}(_0x1a10,0x5f26d),reply(_0x53d05c(0x1b9)+ownername+_0x53d05c(0x1b0)));
 break
 //Akhir Jangan Di Hapus Ntar Error
 default:
