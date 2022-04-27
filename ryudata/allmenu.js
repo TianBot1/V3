@@ -7,6 +7,8 @@ return`╭─📱 _*Other Menu*_
 │✾ ${prefix}script
 │✾ ${prefix}verify
 │✾ ${prefix}creator
+│✾ ${prefix}bulanramadhan
+│✾ ${prefix}tes
 ╰───
 
 ╭─ 🌱 _*Group Menu*_
@@ -89,14 +91,9 @@ return`╭─📱 _*Other Menu*_
 ╰───
 
 ╭─ 💸 _*Store Menu*_
-│✾ ${prefix}valorant
-│✾ ${prefix}mobilelejend
-│✾ ${prefix}freefire
-│✾ ${prefix}codm
-│✾ ${prefix}aov
-│✾ ${prefix}sausage
-│✾ ${prefix}lol
-│✾ ${prefix}pay
+│✾ ${prefix}jpm
+│✾ ${prefix}sewabot
+│✾ ${prefix}dmff
 ╰───
 
 ╭─ 🏝 _*Random Text*_
